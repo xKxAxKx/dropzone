@@ -3,7 +3,7 @@
     <div class="panel-heading">
       <?= $currentUser['name'];?>さんのクラウドストレージ
       <span style="float: right">
-        <?= round($filesize/1000000,2);?>MB使用中
+        <?= round($filesize/1048576,2);?>MB使用中
       </span>
     </div>
     <div class="panel-body">

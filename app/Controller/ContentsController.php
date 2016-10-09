@@ -43,7 +43,7 @@ class ContentsController extends AppController{
       move_uploaded_file($tempFile, $targetFile);
 
       $this->Flash->success('アップロード完了しました');
-      return $this->redirect($this->Auth->redirectUrl());
+      $this->redirect(['action' => 'index']);
     }
 
   }
