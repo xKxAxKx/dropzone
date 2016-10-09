@@ -29,7 +29,7 @@ class ContentsController extends AppController{
     //ユーザフォルダの容量確認
     $filesize = 0;
     for ($i = 0; $i <= count($files[1])-1; $i++) {
-    $filesize += filesize(WWW_ROOT.'files/upload/'.$userId.'/'.$files[1][$i]);
+      $filesize += filesize(WWW_ROOT.'files/upload/'.$userId.'/'.$files[1][$i]);
     }
 
     $this->set('files', $files);
@@ -43,21 +43,26 @@ class ContentsController extends AppController{
       move_uploaded_file($tempFile, $targetFile);
 
       $this->Flash->success('アップロード完了しました');
-      $this->redirect(['action' => 'index']);
+      return $this->redirect(['action' => 'index']);
     }
-
   }
 
-  public function delete($file = null){
-    $this->request->allowMethod('post', 'delete');
+  public function delete(){
     $userId = $this->Auth->user('id');
+    $dir = new Folder(WWW_ROOT.'files/upload/'.$userId.'/');
+    $path = $dir->path;
+    $files = $this->request->data['file'];
 
-    $file = new File(WWW_ROOT.'files/upload/'.$userId.'/'.$file);
-    $file->delete();
-
-    $this->Flash->success('ファイルを削除しました');
-    $this->redirect($this->referer());
-
+    if($files){
+      foreach($files as $file) {
+        unlink($path.$file);
+      }
+      $this->Flash->success('削除が完了しました');
+      $this->redirect($this->referer());
+    } else {
+      $this->Flash->error('データを選択してください');
+      $this->redirect($this->referer());
+    }
   }
 
   public function download($file = null){

@@ -156,7 +156,11 @@
       init: function() {
         // return noop;
         this.on("success", function(file, messageOrDataFromServer, myEvent) {
-          window.setTimeout(function() {alert("アップロードしました."); window.location.href = "index";}, 1000);
+          window.setTimeout(function() {
+            alert("アップロード完了しました");
+            window.location.href = "index";
+          },
+          1000);
         });
       },
       forceFallback: false,

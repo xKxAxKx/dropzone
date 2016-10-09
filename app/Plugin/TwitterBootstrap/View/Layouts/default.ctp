@@ -11,7 +11,6 @@
 
   <!-- Bootstrap -->
 	<?php echo $this->Html->css('bootstrap.min'); ?>
-	<?php echo $this->Html->css('bootstrap-responsive.min'); ?>
   <?php echo $this->Html->css('basic.min'); ?>
   <?php echo $this->Html->css('dropzone'); ?>
 
@@ -51,9 +50,6 @@
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
             <?php if($currentUser) :?>
-              <li>
-                <?= $this->Html->link('設定変更', ['controller' => 'users', 'action' => 'edit']); ?>
-              </li>
               <li>
                 <?= $this->Html->link('ログアウト', ['controller' => 'users', 'action' => 'logout']); ?>
               </li>

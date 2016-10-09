@@ -42,13 +42,10 @@ class UsersController extends AppController{
     $this->redirect($this->Auth->logout());
   }
 
-  public function profile($id = null){
-
-  }
-
-  public function edit($id = null){
-
-  }
+  //
+  // public function edit($id = null){
+  //
+  // }
 
   public function delete($id = null) {
     $this->request->allowMethod('post', 'delete');
