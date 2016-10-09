@@ -158,7 +158,7 @@
         this.on("success", function(file, messageOrDataFromServer, myEvent) {
           window.setTimeout(function() {
             alert("アップロード完了しました");
-            window.location.href = "index";
+            window.location.href = "message";
           },
           1000);
         });

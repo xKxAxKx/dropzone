@@ -41,10 +41,14 @@ class ContentsController extends AppController{
       $targetPath = WWW_ROOT.'files/upload/'.$userId.'/';
       $targetFile = $targetPath.DS.$file['name'];
       move_uploaded_file($tempFile, $targetFile);
-
-      $this->Flash->success('アップロード完了しました');
-      return $this->redirect(['action' => 'index']);
     }
+  }
+
+  public function message(){
+    $this->autoRender = false;
+
+    $this->Flash->success('アップロード完了しました');
+    $this->redirect(['action' => 'index']);
   }
 
   public function delete(){
